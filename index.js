@@ -1,5 +1,5 @@
 import BookmarkFacilitator from './lib/bookmarkFacilitator.js';
-import { CasefileGroup } from './lib/casefile.js';
+import { CasefileGroup, DeletedCasefileRef } from './lib/casefile.js';
 import CommandRunner from './lib/commandRunner.js';
 import GitInteraction from './lib/gitInteraction.js';
 import GitRemote from './lib/gitRemote.js';
@@ -12,7 +12,7 @@ import GitRemote from './lib/gitRemote.js';
  */
 export class CasefileKeeper {
   constructor(kwargs = {}) {
-    this.gitOps = kwargs.gitOpts || new GitInteraction({
+    this.gitOps = kwargs.gitOps || new GitInteraction({
       runGitCommand: kwargs.runGitCommand || CommandRunner('git', {
         ...kwargs.toolOptions,
         usesSubcommands: true,
@@ -20,7 +20,7 @@ export class CasefileKeeper {
     });
     this.bookmarks = new BookmarkFacilitator({
       ...kwargs,
-      gitOpts: this.gitOpts,
+      gitOps: this.gitOps,
     });
   }
   
