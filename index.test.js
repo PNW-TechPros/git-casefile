@@ -48,8 +48,13 @@ describe('CasefileKeeper', () => {
   describe('.prototype.getCasefiles', () => {
     const subject = constructSubject();
     const casefilesData = [
-      {name: 'foo', instances: ['f28e0a85-baa8-505f-88ea-e3336640ab33', 'b2e8f5c0-df9c-5db1-8004-4e8dcf35dca4']},
-      {name: 'bar', instances: ['e1bbf230-274a-5df5-b387-6024eb730685']},
+      {name: 'foo', instances: [
+        { path: 'foo/f28e0a85-baa8-505f-88ea-e3336640ab33' },
+        { path: 'foo/b2e8f5c0-df9c-5db1-8004-4e8dcf35dca4' },
+      ]},
+      {name: 'bar', instances: [
+        { path: 'bar/e1bbf230-274a-5df5-b387-6024eb730685' },
+      ]},
     ];
     let casefiles = null;
     
@@ -85,8 +90,8 @@ describe('CasefileKeeper', () => {
         });
         
         it(`has an entry in 'instances' for each available casefile instance`, async function() {
-          expect(casefiles[name].instances.map(i => i.distinguisher))
-            .has.members(instances)
+          expect(casefiles[name].instances.map(i => i.path))
+            .has.members(instances.map(i => i.path))
             ;
         });
       });
