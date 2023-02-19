@@ -9,7 +9,7 @@ import DiffInteraction from './diffInteraction.js';
 import { NoEditor } from './editor.js';
 import GitInteraction from './gitInteraction.js';
 
-import { FAIL_ON_LOG } from '../test/helpers.js';
+import { FAIL_ON_LOG } from '../../test/helpers.js';
 
 class InjectedError extends CodedError({}) {};
 
