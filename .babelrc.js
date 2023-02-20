@@ -1,6 +1,9 @@
 const sharedPresets = [];
 const cjsify = ['@babel/preset-env', {
-  
+  targets: {
+    node: '14.0',
+  },
+  modules: 'cjs',
 }];
 
 module.exports = {
