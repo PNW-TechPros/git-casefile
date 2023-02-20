@@ -4,7 +4,7 @@ import chaiAsPromised from 'chai-as-promised';
 import { readFileSync } from 'fs';
 import { jest } from '@jest/globals';
 import { PassThrough, finished } from 'stream';
-import { temporaryWriteTask } from 'tempy';
+import { write as temporaryWrite } from 'tempy';
 
 chai.use(chaiAsPromised);
 
@@ -247,7 +247,7 @@ describe('DiffInteraction', () => {
     
     it(`includes paths for content from specified files as property of DiffFailure`, async function() {
       const content = 'foo\nbar\nbaz\n';
-      await temporaryWriteTask(content, async (path) => {
+      await temporaryWrite.task(content, async (path) => {
         const baseContent = { path };
         const currentContent = { immediate: content };
         this.diffMock.expectCall(async ({ stdio: { stdout }, ...execution }) => {

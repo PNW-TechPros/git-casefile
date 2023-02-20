@@ -1,5 +1,5 @@
 import fsPromises from 'fs/promises';
-import { temporaryWrite } from 'tempy';
+import { write as temporaryWrite } from 'tempy';
 import CodedError, { ASSERT_ERROR } from './codedError.js';
 import Janitor from './janitor.js';
 import SeparatedRecordConsumer from './SeparatedRecordConsumer.js';

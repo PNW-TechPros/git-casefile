@@ -69,9 +69,9 @@ function spyOn(obj, method, impl) {
   };
 }
 
-jest.unstable_mockModule('child_process', () => childProcessMock);
+jest.mock('child_process', () => childProcessMock);
 
-let { default: CommandRunner, CommandExecutionError } = await import('./commandRunner.js');
+let { default: CommandRunner, CommandExecutionError } = require('./commandRunner.js');
 
 describe('CommandRunner', () => {
   const program = 'test-program'; // MUST NOT contain any RegExp special characters

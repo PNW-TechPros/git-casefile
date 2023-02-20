@@ -615,7 +615,7 @@ export default class GitInteraction {
   /**
    * @summary Push a commit to a named reference on a remote
    * @param {string} remote
-   * @param {...(PushSpec | string>)} specs
+   * @param {...(PushSpec | string)} specs
    *    What to push
    * @returns {Promise.<null>}
    *
