@@ -1,8 +1,8 @@
-import BookmarkFacilitator from './src/lib/bookmarkFacilitator.js';
-import { CasefileGroup, DeletedCasefileRef } from './src/lib/casefile.js';
-import CommandRunner from './src/lib/commandRunner.js';
-import GitInteraction from './src/lib/gitInteraction.js';
-import GitRemote from './src/lib/gitRemote.js';
+import BookmarkFacilitator from './lib/bookmarkFacilitator.js';
+import { CasefileGroup, DeletedCasefileRef } from './lib/casefile.js';
+import CommandRunner from './lib/commandRunner.js';
+import GitInteraction from './lib/gitInteraction.js';
+import GitRemote from './lib/gitRemote.js';
 
 /**
  * @summary Class for managing casefiles

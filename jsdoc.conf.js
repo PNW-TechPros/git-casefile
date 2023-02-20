@@ -3,7 +3,7 @@ exports.plugins = [
 ];
 
 exports.source = {
-  include: ['src', 'index.mjs'],
+  include: ['src'],
 };
 
 exports.opts = {

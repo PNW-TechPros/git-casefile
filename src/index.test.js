@@ -1,10 +1,10 @@
 import chai, { expect } from 'chai';
 import * as double from 'testdouble';
 import { CasefileKeeper } from './index.js';
-import { CasefileRef } from './src/lib/casefile.js';
-import DiffInteraction from './src/lib/diffInteraction.js';
-import GitInteraction from './src/lib/gitInteraction.js';
-import GitRemote from './src/lib/gitRemote.js';
+import { CasefileRef } from './lib/casefile.js';
+import DiffInteraction from './lib/diffInteraction.js';
+import GitInteraction from './lib/gitInteraction.js';
+import GitRemote from './lib/gitRemote.js';
 
 beforeEach(async () => {
   double.reset();
