@@ -1,5 +1,5 @@
 
-export default class GitRemote {
+class GitRemote {
   constructor(gitOps, remote) {
     this.gitOps = gitOps;
     this.name = remote;
@@ -43,7 +43,6 @@ export default class GitRemote {
    *       case 'cancel':
    *         return false;
    *       case 'pushAndShare':
-   *         await remote.pushCommitRefs(unshared);
    *         return true;
    *     }
    *   }
@@ -57,10 +56,7 @@ export default class GitRemote {
   async commitsUnknown(casefile) {
     const commits = await this.gitOps.selectCommitsUnknownToRemote(
       this.name,
-      casefile.bookmarks.flatMap(mark => {
-        const commit = mark?.peg?.commit;
-        return commit ? [commit] : [];
-      })
+      reduceBookmarkForestToCommits(casefile.bookmarks)
     );
     return commits.length ? commits : false;
   }
@@ -118,3 +114,24 @@ export default class GitRemote {
     );
   }
 }
+
+function reduceBookmarkForestToCommits(bookmarks) {
+  bookmarks = [...bookmarks];
+  const commits = new Set(), bookmarksSeen = new Set();
+  while (bookmarks.length) {
+    const bookmark = bookmarks.shift();
+    if (bookmark?.children?.length) {
+      for (const child of bookmark.children) {
+        if (bookmarksSeen.has(child)) continue;
+        bookmarks.push(child);
+        bookmarksSeen.add(child);
+      }
+    }
+    const markCommit = bookmark?.peg?.commit;
+    if (markCommit) {
+      commits.add(markCommit);
+    }
+  }
+  return [...commits];
+}
+
