@@ -10,7 +10,11 @@ export { ASSERT_ERROR };
 
 const hunkMapping = /^@@\s*-?(\d+)(?:,(\d+))?\s+\+?(\d+)(?:,(\d+))?/;
 
-export default class DiffInteraction {
+/**
+ * @summary Class encapsulating usage of `diff`
+ * @memberof module:git-casefile/impl
+ */
+class DiffInteraction {
   constructor({ runDiffCommand }) {
     this.diffCommandRunner = runDiffCommand;
   }
@@ -149,3 +153,5 @@ const ERROR_MESSAGES_BY_CODE = {
 };
 
 export class DiffInteractionError extends CodedError(ERROR_MESSAGES_BY_CODE) {}
+
+export default DiffInteraction;

@@ -25,6 +25,14 @@ export class CasefileGroup {
  * @summary Reference to a shared/saved casefile
  *
  * @property {string} path
+ *
+ * @description
+ * Objects of this type reference a stored casefile which has been fetched
+ * from a Git remote repository.  The only guarantees made about successfully
+ * [load]{@link CasefileRef#load}ed casefiles are:
+ *
+ *    * The stored casefile is valid JSON.
+ *    * The `path` property is set to the path of this instance.
  */
 export class CasefileRef {
   constructor(gitOps, groupName, path) {
@@ -45,7 +53,7 @@ export class CasefileRef {
   
   /**
    * @summary Load the casefile contents from the repository
-   * @returns {Promise.<object>}
+   * @returns {Promise.<(Casefile | object)>}
    */
   async load() {
     return this.gitOps.getCasefile(this.path);

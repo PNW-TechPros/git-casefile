@@ -1,3 +1,6 @@
+/**
+ * @module git-casefile
+ */
 import BookmarkFacilitator from './lib/bookmarkFacilitator.js';
 import { CasefileGroup, DeletedCasefileRef } from './lib/casefile.js';
 import CommandRunner from './lib/commandRunner.js';
@@ -9,8 +12,30 @@ import GitRemote from './lib/gitRemote.js';
  *
  * @property {BookmarkFacilitator} bookmarks
  * @property {GitInteraction} gitOps
+ *
+ * @description
+ * Use an instance of this class to both manage bookmark instances (through
+ * its *bookmarks* property) and to access the shared casefile library(ies)
+ * of configured remotes.
+ *
+ * While casefiles shared to remotes are generally expected to conform to the
+ * {@link Casefile} type, there is no requirement they do so...only that they
+ * are Objects supporting `JSON.stringify`.
  */
 export class CasefileKeeper {
+  /**
+   * @summary Construct an instance of this class
+   * @param {object} [kwargs]
+   *    Keyword arguments; passed through to construct a {@link BookmarkFacilitator}
+   * @param {GitInteraction} [kwargs.gitOps]
+   *    Alternate implementation of Git operations
+   * @param {ToolkitRunnerFunc} [kwargs.runGitCommand]
+   *    Alternate command runner for executing `git` program used to construct
+   *    a {@link GitInteraction} object if *kwargs.gitOps* is not given
+   * @param {object} [kwargs.toolOptions]
+   *    Options used to construct a {@link ToolkitRunnerFunc} for `git` if
+   *    neither *kwargs.gitOps* nor *kwargs.runGitCommand* are given
+   */
   constructor(kwargs = {}) {
     this.gitOps = kwargs.gitOps || new GitInteraction({
       runGitCommand: kwargs.runGitCommand || CommandRunner('git', {

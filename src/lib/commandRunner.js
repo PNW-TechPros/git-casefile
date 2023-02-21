@@ -65,7 +65,7 @@ export class CommandExecutionError extends CodedError({}) {};
  * @callback CommandRunnerFunc
  * @param {object} [kwargs]
  * @param {Object.<string,(string | true)>} [kwargs.opts]
- *    Options for the tool invocation; the `-` property is special: it's value
+ *    Options for the tool invocation; the `-` property is special: its value
  *    is treated as a list of single letter, non-argument options; option
  *    rendering for `child_process.spawn`'s argument array is controlled by
  *    *opts.optStyle* passed to {@link createCommandRunner}
@@ -80,11 +80,11 @@ export class CommandExecutionError extends CodedError({}) {};
  *    when it is available; input to the child process may be written or
  *    piped into the STDIN stream
  * @param {function} [kwargs.exit]
- *    Called with the child process's exit code when the process exits; it's
+ *    Called with the child process's exit code when the process exits; its
  *    return value is the resolved value of this function
  * @param {function} [kwargs.makeResult]
  *    Called if no *kwargs.exit* given and the child process exits with code 0;
- *    it's return value is the resolved value of this function
+ *    its return value is the resolved value of this function
  * @param {function} [kwargs.result]
  *    Value to which this function resolves if the child process exits with
  *    code 0 and neither *kwargs.exit* nor *kwargs.makeResult* are given
@@ -130,7 +130,7 @@ export class CommandExecutionError extends CodedError({}) {};
  * See {@link CommandRunnerFunc} for description of params and return value
  */
 /**
- * @function createCommandRunner
+ * @function module:git-casefile/impl.CommandRunner
  * @summary Construct a command-runner function
  * @param {string} program
  *    The name of the program to run

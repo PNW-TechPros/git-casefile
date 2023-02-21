@@ -1,4 +1,7 @@
 
+/**
+ * @summary Interact with Git remote
+ */
 class GitRemote {
   constructor(gitOps, remote) {
     this.gitOps = gitOps;
@@ -43,6 +46,7 @@ class GitRemote {
    *       case 'cancel':
    *         return false;
    *       case 'pushAndShare':
+   *         await remote.pushCommitRefs(...unshared);
    *         return true;
    *     }
    *   }
@@ -52,6 +56,10 @@ class GitRemote {
    *
    * The function above resolves `true` if the casefile should be shared (with
    * `remote.share(casefile)`) and `false` if not.
+   *
+   * This method only functions properly on a {@link Casefile} whose `bookmarks`
+   * embody the {@link Bookmark} type, specifically with regard to `peg.commit`
+   * and `children`.
    */ 
   async commitsUnknown(casefile) {
     const commits = await this.gitOps.selectCommitsUnknownToRemote(
@@ -135,3 +143,4 @@ function reduceBookmarkForestToCommits(bookmarks) {
   return [...commits];
 }
 
+export default GitRemote;

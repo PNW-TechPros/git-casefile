@@ -13,7 +13,7 @@ class MarkNotFound extends Error {
 }
 
 /**
- * @class Object Bookmark
+ * @typedef {Object} Bookmark
  *
  * @property {string} file
  *    Path within the project to the file
@@ -21,6 +21,8 @@ class MarkNotFound extends Error {
  *    Line number (1-based) in file when bookmark was constructed
  * @property {string} text
  *    Text marked by bookmark
+ * @property {Array.<Bookmark>} [children]
+ *    Child bookmarks
  * @property {object} [peg]
  *    Persistent location identity within Git repository
  * @property {string} peg.commit
@@ -41,7 +43,7 @@ class MarkNotFound extends Error {
  * @property {DiffInteraction} diffOps
  *    Used to execute `diff`
  */
-export default class BookmarkFacilitator {
+class BookmarkFacilitator {
   /**
    * Construct an instance
    *
@@ -50,21 +52,34 @@ export default class BookmarkFacilitator {
    *    Object used for interacting with the conceptual editor that might hold
    *    live changes to a given file in the working tree
    * @param {GitInteraction} [kwargs.gitOps]
-   *    Object for interacting with the `git` program; see description for
-   *    default behavior
+   *    Alternate implementation of Git operations
    * @param {ToolkitRunnerFunc} [kwargs.runGitCommand]
-   *    Function for invoking a Git command; see description for default
-   *    behavior
+   *    Alternate command runner for executing `git` program used to construct
+   *    a {@link GitInteraction} object if *kwargs.gitOps* is not given
    * @param {DiffInteraction} [kwargs.diffOps]
-   *    Object for interacting with the `diff` program; see description for
-   *    default behavior
+   *    Alternate implementation of diff operations
    * @param {CommandRunnerFunc} [kwargs.runDiffCommand]
-   *    Function for invoking `diff`; see description for default behavior
+   *    Alternate command runner for executing `diff` program used to construct
+   *    a {@link DiffInteraction} object if *kwargs.diffOps* is not given
    * @param {object} [kwargs.toolOptions={}]
    *    Tool options passed to {@link CommandRunner}, used if functions for
    *    invoking `git` or `diff` are needed
    * @param {Logger} [kwargs.logger=console]
    *    A `console`-like object used for logging warnings and errors
+   *
+   * @description
+   * A BookmarkFacilitator needs a {@link GitInteraction} and a
+   * {@link DiffInteraction} for carrying out its various methods.  If these
+   * are not provided in the *kwargs.gitOps* and *kwargs.diffOps* parameters,
+   * they will be constructed from the parameters that are provided.
+   *
+   * Construction of a {@link GitInteraction} requires a `runGitCommand`
+   * which, if not provided in *kwargs.runGitCommand*, is constructed based
+   * on *kwargs.toolOptions* (though passing `usesSubcommands` as `true`).
+   * Similarly, construction of a {@link DiffInteraction} requires a
+   * `runDiffCommand` which, if not provided in *kwargs.runDiffCommand*,
+   * is constructed based on *kwargs.toolOptions* (though passing
+   * `usesSubcommands` as `false`).
    */
   constructor({ editor, gitOps, runGitCommand, diffOps, runDiffCommand, toolOptions = {}, logger = console } = {}) {
     this.logger = logger;
@@ -292,3 +307,5 @@ export default class BookmarkFacilitator {
     }
   }
 }
+
+export default BookmarkFacilitator;
