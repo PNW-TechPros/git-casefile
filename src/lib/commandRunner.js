@@ -30,20 +30,24 @@ const defaultOptHandlers = {
 export class CommandExecutionError extends CodedError({}) {};
 
 /**
- * @event CommandRunner#execute
+ * @event execute
  * @param {string} program
  *    The name of the program to be passed to `child_process.spawn`
  * @param {Array.<string>} arguments
  *    The array of arguments to be passed to `child_process.spawn`
  * @param {object} options
  *    The options object to be passed to `child_process.spawn`
+ * @see module:git-casefile/impl.CommandRunner
  *
  * @description
- * This event is emitted before `child_process.spawn` is called.  The parms of
- * the event reflect the arguments to `child_process.spawn`.
+ * This event is emitted to the `opts.tracer` given in a call to
+ * [CommandRunner]{@link module:git-casefile/impl.CommandRunner} when the resulting
+ * {@link CommandRunnerFunc} or {@link ToolkitRunnerFunc} is called.
+ * The event is emitted before `child_process.spawn` is called.  The parameters
+ * of the event correspond to the arguments to `child_process.spawn`.
  */
 /**
- * @event CommandRunner#executing
+ * @event executing
  * @param {object} props
  * @param {string} props.program
  *    The name of the program passed to `child_process.spawn`
@@ -53,8 +57,12 @@ export class CommandExecutionError extends CodedError({}) {};
  *    The options object passed to `child_process.spawn`
  * @param {ChildProcess} props.process
  *    The `ChildProcess` returned by `child_process.spawn`
+ * @see module:git-casefile/impl.CommandRunner
  *
  * @description
+ * This event is emitted to the `opts.tracer` given in a call to
+ * [CommandRunner]{@link module:git-casefile/impl.CommandRunner} when the resulting
+ * {@link CommandRunnerFunc} or {@link ToolkitRunnerFunc} is called.
  * This event is emitted from the synchronous context in which
  * `child_process.spawn` is called, allowing manipulation of the `stdin`,
  * `stdout`, and `stderr` streams before they are connected to the processing
