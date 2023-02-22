@@ -2,6 +2,7 @@ export const ENDL_PATTERN = /\r?\n|\r/;
 const MAYBE_ENDL_AT_END_PATTERN = new RegExp(`(?:${ENDL_PATTERN.source})?$`);
 
 /**
+ * @private
  * @summary Reverse string partition (split)
  * @param {string} s - The string to be split
  * @param {string} sep - The separator between result parts

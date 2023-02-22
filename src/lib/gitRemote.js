@@ -1,5 +1,8 @@
 
-export default class GitRemote {
+/**
+ * @summary Interact with Git remote
+ */
+class GitRemote {
   constructor(gitOps, remote) {
     this.gitOps = gitOps;
     this.name = remote;
@@ -43,7 +46,7 @@ export default class GitRemote {
    *       case 'cancel':
    *         return false;
    *       case 'pushAndShare':
-   *         await remote.pushCommitRefs(unshared);
+   *         await remote.pushCommitRefs(...unshared);
    *         return true;
    *     }
    *   }
@@ -53,14 +56,15 @@ export default class GitRemote {
    *
    * The function above resolves `true` if the casefile should be shared (with
    * `remote.share(casefile)`) and `false` if not.
+   *
+   * This method only functions properly on a {@link Casefile} whose `bookmarks`
+   * embody the {@link Bookmark} type, specifically with regard to `peg.commit`
+   * and `children`.
    */ 
   async commitsUnknown(casefile) {
     const commits = await this.gitOps.selectCommitsUnknownToRemote(
       this.name,
-      casefile.bookmarks.flatMap(mark => {
-        const commit = mark?.peg?.commit;
-        return commit ? [commit] : [];
-      })
+      reduceBookmarkForestToCommits(casefile.bookmarks)
     );
     return commits.length ? commits : false;
   }
@@ -118,3 +122,25 @@ export default class GitRemote {
     );
   }
 }
+
+function reduceBookmarkForestToCommits(bookmarks) {
+  bookmarks = [...bookmarks];
+  const commits = new Set(), bookmarksSeen = new Set();
+  while (bookmarks.length) {
+    const bookmark = bookmarks.shift();
+    if (bookmark?.children?.length) {
+      for (const child of bookmark.children) {
+        if (bookmarksSeen.has(child)) continue;
+        bookmarks.push(child);
+        bookmarksSeen.add(child);
+      }
+    }
+    const markCommit = bookmark?.peg?.commit;
+    if (markCommit) {
+      commits.add(markCommit);
+    }
+  }
+  return [...commits];
+}
+
+export default GitRemote;

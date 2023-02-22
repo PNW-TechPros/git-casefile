@@ -13,7 +13,11 @@ export { ASSERT_ERROR };
 
 const DeletedCasefileListingStates = makeEnum('action path');
 
-export default class GitInteraction {
+/**
+ * @summary Class encapsulating usage of `git`
+ * @memberof module:git-casefile/impl
+ */
+class GitInteraction {
   constructor({ runGitCommand }) {
     this.gitCommandRunner = runGitCommand;
   }
@@ -504,6 +508,7 @@ export default class GitInteraction {
   }
   
   /**
+   * @private
    * @typedef {object} TreeEntry
    * @property {string} mode
    * @property {string} type
@@ -603,6 +608,7 @@ export default class GitInteraction {
   }
   
   /**
+   * @private
    * @typedef {Object} PushSpec
    * @property {string} source
    *    Committish in the local repository
@@ -615,7 +621,7 @@ export default class GitInteraction {
   /**
    * @summary Push a commit to a named reference on a remote
    * @param {string} remote
-   * @param {...(PushSpec | string>)} specs
+   * @param {...(PushSpec | string)} specs
    *    What to push
    * @returns {Promise.<null>}
    *
@@ -901,6 +907,7 @@ const ERROR_MESSAGES_BY_CODE = {
 export class GitInterationError extends CodedError(ERROR_MESSAGES_BY_CODE) {}
 
 /**
+ * @private
  * @summary Create an enumeration object
  * @params {string} spaceSeparatedTerms - Enumerated names with spaces between
  * @returns {object} Enumeration object with a property for each name in *spaceSeparatedTerms*
@@ -923,3 +930,5 @@ function lineStream(handler) {
     .setRecordEncoding('utf8')
     .on('record', handler);
 }
+
+export default GitInteraction;
