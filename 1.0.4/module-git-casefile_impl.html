@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>git-casefile/impl - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../versions.html" class="menu-item version-select" id="other_versions" >select version</a></h2><h3>Modules</h3><ul><li><a href="module-git-casefile.html">git-casefile</a></li><li><a href="module-git-casefile_impl.html">git-casefile/impl</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.html#.CommandRunner">CommandRunner</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="EditBuffer.html">EditBuffer</a><ul class='methods'><li data-type='method'><a href="EditBuffer.html#lineText">lineText</a></li></ul></li><li><a href="Editor.html">Editor</a><ul class='methods'><li data-type='method'><a href="Editor.html#liveContent">liveContent</a></li><li data-type='method'><a href="Editor.html#open">open</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="BookmarkFacilitator.html">BookmarkFacilitator</a><ul class='methods'><li data-type='method'><a href="BookmarkFacilitator.html#computeLinePeg">computeLinePeg</a></li><li data-type='method'><a href="BookmarkFacilitator.html#currentLocation">currentLocation</a></li></ul></li><li><a href="CasefileGroup.html">CasefileGroup</a></li><li><a href="CasefileRef.html">CasefileRef</a><ul class='methods'><li data-type='method'><a href="CasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="CasefileRef.html#load">load</a></li></ul></li><li><a href="DeletedCasefileRef.html">DeletedCasefileRef</a><ul class='methods'><li data-type='method'><a href="DeletedCasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="DeletedCasefileRef.html#retrieve">retrieve</a></li></ul></li><li><a href="GitRemote.html">GitRemote</a><ul class='methods'><li data-type='method'><a href="GitRemote.html#commitsUnknown">commitsUnknown</a></li><li data-type='method'><a href="GitRemote.html#delete">delete</a></li><li data-type='method'><a href="GitRemote.html#fetchSharedCasefiles">fetchSharedCasefiles</a></li><li data-type='method'><a href="GitRemote.html#pushCommitRefs">pushCommitRefs</a></li><li data-type='method'><a href="GitRemote.html#share">share</a></li></ul></li><li><a href="module-git-casefile.CasefileKeeper.html">CasefileKeeper</a><ul class='methods'><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getCasefiles">getCasefiles</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getRemotes">getRemotes</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#remote">remote</a></li></ul></li><li><a href="module-git-casefile_impl.DiffInteraction.html">DiffInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.DiffInteraction.html#getHunks">getHunks</a></li></ul></li><li><a href="module-git-casefile_impl.GitInteraction.html">GitInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#deleteCasefilePaths">deleteCasefilePaths</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchFromRemote">fetchFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchSharedCasefilesFromRemote">fetchSharedCasefilesFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#findCurrentLinePosition">findCurrentLinePosition</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getBlobContent">getBlobContent</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefile">getCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefileAuthors">getCasefileAuthors</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfCasefiles">getListOfCasefiles</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfRemotes">getListOfRemotes</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lineIntroduction">lineIntroduction</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lsTree">lsTree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#mktree">mktree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#push">push</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#revParse">revParse</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#selectCommitsUnknownToRemote">selectCommitsUnknownToRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#shareCasefile">shareCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#updateRef">updateRef</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="global.html#event:execute">execute</a></li><li><a href="global.html#event:executing">executing</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">git-casefile/impl</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="module-git-casefile_impl.DiffInteraction.html">DiffInteraction</a></dt>
+            <dd><p>Class encapsulating usage of <code>diff</code></p></dd>
+        
+            <dt><a href="module-git-casefile_impl.GitInteraction.html">GitInteraction</a></dt>
+            <dd><p>Class encapsulating usage of <code>git</code></p></dd>
+        </dl>
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".CommandRunner"><span class="type-signature">(static) </span>CommandRunner<span class="signature">(program, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#CommandRunnerFunc">CommandRunnerFunc</a>|<a href="global.html#ToolkitRunnerFunc">ToolkitRunnerFunc</a>}</span></h4>
+
+    
+    <p class="summary usertext"><p>Construct a command-runner function</p></p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_commandRunner.js.html">lib/commandRunner.js</a>, <a href="lib_commandRunner.js.html#line140">line 140</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Invocation of command line tools involves several aspects not covered by
+NodeJS's <code>child_process</code> module: flags, optional arguments, consumption of
+STDOUT, provision of input on STDIN, propagating STDERR output to a
+meaningful place (often to <code>console</code>), and handling of child process exit
+codes.</p>
+<p>The functions returned by this function implement that level of expressivity
+for invoking command line tools programmatically: flags and optional arguments
+can be given in an Object (to indicate the irrelevance of ordering and to
+simplify each tool invocation), STDOUT can be delivered to a function that
+receives strings (or to a <code>Writable</code> stream for more flexibility), timeout
+capability is baked in, and coordination of result generation is easy;
+failures reject with a meaningful error.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>program</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the program to run</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Path to search for the program (given in normal style for the platform),
+or a function that returns the path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cwd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Path to made the current directory of the tool when it starting</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>env</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, string></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Object mapping environment variable names to values; can be overriden
+by passing an <code>env</code> property when invoking the tool; defaults to
+<code>process.env</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>usesSubcommands</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether the returned value is a <a href="global.html#ToolkitRunnerFunc">ToolkitRunnerFunc</a> (<code>true</code>) or
+a <a href="global.html#CommandRunnerFunc">CommandRunnerFunc</a> (<code>false</code>)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optStyle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'gnuopt'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>A defined style of option rendering to be used with <code>opts</code> of the
+tool invocation</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of seconds to wait for the tool to complete execution before
+rejecting with a timeout error (<code>err.code === 'Timeout'</code>)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>logger</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>A console-like object supporting at least an <code>error</code> method to which
+errors are reported</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tracer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EventEmitter</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>An EventEmitter on which <code>'execute'</code> (pre-execution) and <code>'executing'</code>
+(after execution starts) events will be emitted</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>outputEncoding</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The name of a string encoding to use when converting output to strings;
+only effective for STDOUT if <code>stdout</code> prop passed to an invocation is a
+function, but also affects STDERR (which defaults to <code>'utf8'</code>)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#CommandRunnerFunc">CommandRunnerFunc</a></span>
+|
+
+<span class="param-type"><a href="global.html#ToolkitRunnerFunc">ToolkitRunnerFunc</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Wed Feb 22 2023 23:09:35 GMT-0800 (Pacific Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="styles/pkg-custom.css">
+    
+</body>
+</html>

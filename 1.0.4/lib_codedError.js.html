@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>lib/codedError.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../versions.html" class="menu-item version-select" id="other_versions" >select version</a></h2><h3>Modules</h3><ul><li><a href="module-git-casefile.html">git-casefile</a></li><li><a href="module-git-casefile_impl.html">git-casefile/impl</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.html#.CommandRunner">CommandRunner</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="EditBuffer.html">EditBuffer</a><ul class='methods'><li data-type='method'><a href="EditBuffer.html#lineText">lineText</a></li></ul></li><li><a href="Editor.html">Editor</a><ul class='methods'><li data-type='method'><a href="Editor.html#liveContent">liveContent</a></li><li data-type='method'><a href="Editor.html#open">open</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="BookmarkFacilitator.html">BookmarkFacilitator</a><ul class='methods'><li data-type='method'><a href="BookmarkFacilitator.html#computeLinePeg">computeLinePeg</a></li><li data-type='method'><a href="BookmarkFacilitator.html#currentLocation">currentLocation</a></li></ul></li><li><a href="CasefileGroup.html">CasefileGroup</a></li><li><a href="CasefileRef.html">CasefileRef</a><ul class='methods'><li data-type='method'><a href="CasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="CasefileRef.html#load">load</a></li></ul></li><li><a href="DeletedCasefileRef.html">DeletedCasefileRef</a><ul class='methods'><li data-type='method'><a href="DeletedCasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="DeletedCasefileRef.html#retrieve">retrieve</a></li></ul></li><li><a href="GitRemote.html">GitRemote</a><ul class='methods'><li data-type='method'><a href="GitRemote.html#commitsUnknown">commitsUnknown</a></li><li data-type='method'><a href="GitRemote.html#delete">delete</a></li><li data-type='method'><a href="GitRemote.html#fetchSharedCasefiles">fetchSharedCasefiles</a></li><li data-type='method'><a href="GitRemote.html#pushCommitRefs">pushCommitRefs</a></li><li data-type='method'><a href="GitRemote.html#share">share</a></li></ul></li><li><a href="module-git-casefile.CasefileKeeper.html">CasefileKeeper</a><ul class='methods'><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getCasefiles">getCasefiles</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getRemotes">getRemotes</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#remote">remote</a></li></ul></li><li><a href="module-git-casefile_impl.DiffInteraction.html">DiffInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.DiffInteraction.html#getHunks">getHunks</a></li></ul></li><li><a href="module-git-casefile_impl.GitInteraction.html">GitInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#deleteCasefilePaths">deleteCasefilePaths</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchFromRemote">fetchFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchSharedCasefilesFromRemote">fetchSharedCasefilesFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#findCurrentLinePosition">findCurrentLinePosition</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getBlobContent">getBlobContent</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefile">getCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefileAuthors">getCasefileAuthors</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfCasefiles">getListOfCasefiles</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfRemotes">getListOfRemotes</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lineIntroduction">lineIntroduction</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lsTree">lsTree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#mktree">mktree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#push">push</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#revParse">revParse</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#selectCommitsUnknownToRemote">selectCommitsUnknownToRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#shareCasefile">shareCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#updateRef">updateRef</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="global.html#event:execute">execute</a></li><li><a href="global.html#event:executing">executing</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/codedError.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @property {string} [code] - Programmatically recognizable identifier of error
+ */
+export default function CodedError(defaultMessages = {}) {
+  return class extends Error {
+    /**
+     * @summary Construction of an instance
+     * @param {object} props
+     * @param {string} [props.message] - Explicit message for error
+     * @param {string} [props.code] - Progammatically recognizable identifier of error
+     *
+     * @description
+     * Except for *props.message*, all *props* passed are assigned to the
+     * constructed instance.  If a recognized *props.code* is given but
+     * *props.message* is falsey, the default message associated with *props.code*
+     * will be used as the message for the instance.
+     */
+    constructor({message, ...props}) {
+      super(message || defaultMessages[props.code]);
+      Object.assign(this, props);
+    }
+  };
+};
+
+export const ASSERT_ERROR = Symbol('assertion error');
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Wed Feb 22 2023 23:09:35 GMT-0800 (Pacific Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="styles/pkg-custom.css">
+    
+</body>
+</html>
