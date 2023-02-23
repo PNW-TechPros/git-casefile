@@ -60,5 +60,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PNW-TechPros/git-casefile.git"
-  }
+  },
+  "homepage": "https://pnw-techpros.github.io/git-casefile"
 }
