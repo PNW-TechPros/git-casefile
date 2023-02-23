@@ -28,7 +28,9 @@ The entrypoint for the package documentation is the *git-casefile* module and it
 const { CasefileKeeper } = require('git-casefile');
 
 const cfKeeper = new CasefileKeeper({
-  // Pass a "cwd" prop here if needed
+  toolOptions: {
+    // Pass "cwd" or "path" props here if needed
+  },
 });
 
 // Use cfKeeper to access remotes, load casefiles, or recover deleted casefiles.
@@ -43,7 +45,9 @@ const cfKeeper = new CasefileKeeper({
 import { CasefileKeeper } from 'git-casefile';
 
 const cfKeeper = new CasefileKeeper({
-  // Pass a "cwd" prop here if needed
+  toolOptions: {
+    // Pass "cwd" or "path" props here if needed
+  },
 });
 
 // Use cfKeeper to access remotes, load casefiles, or recover deleted casefiles.
