@@ -1,0 +1,14 @@
+node_modules
+/.github
+/coverage
+/doc
+/notes
+/scripts
+/src
+/test
+.babelrc*
+.git
+jest.config.js
+jsdoc.conf.js
+.gitignore
+package-lock.json
