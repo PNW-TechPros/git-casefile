@@ -12,3 +12,5 @@ jest.config.js
 jsdoc.conf.js
 .gitignore
 package-lock.json
+*.test.js
+*.js.map
