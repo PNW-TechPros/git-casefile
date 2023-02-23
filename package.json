@@ -1,6 +1,6 @@
 {
   "name": "git-casefile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tools for maintaining bookmarks to code in a Git repository",
   "type": "commonjs",
   "main": "./cjs/index.js",
