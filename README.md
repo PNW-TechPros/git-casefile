@@ -1,5 +1,7 @@
 # git-casefile Package
 
+[![Automated tests](https://github.com/PNW-TechPros/git-casefile/actions/workflows/ci-tests.yml/badge.svg?branch=version%2F1.x)](https://github.com/PNW-TechPros/git-casefile/actions/workflows/ci-tests.yml)
+
 [Casefile][casefile] was a dogfooded test-bed for a new kind of bookmarking system built for the Atom text editor.  Now that the Atom editor is dead, `git-casefile` aims to refactor the functionality of `casefile` into a package consumable by other editors, primarily VS Code.
 
 ## Installation
