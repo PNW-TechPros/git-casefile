@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>lib/casefile.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../versions.html" class="menu-item version-select" id="other_versions" >select version</a></h2><h3>Modules</h3><ul><li><a href="module-git-casefile.html">git-casefile</a></li><li><a href="module-git-casefile_impl.html">git-casefile/impl</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.html#.CommandRunner">CommandRunner</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="EditBuffer.html">EditBuffer</a><ul class='methods'><li data-type='method'><a href="EditBuffer.html#lineText">lineText</a></li></ul></li><li><a href="Editor.html">Editor</a><ul class='methods'><li data-type='method'><a href="Editor.html#liveContent">liveContent</a></li><li data-type='method'><a href="Editor.html#open">open</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="BookmarkFacilitator.html">BookmarkFacilitator</a><ul class='methods'><li data-type='method'><a href="BookmarkFacilitator.html#computeLinePeg">computeLinePeg</a></li><li data-type='method'><a href="BookmarkFacilitator.html#currentLocation">currentLocation</a></li></ul></li><li><a href="CasefileGroup.html">CasefileGroup</a></li><li><a href="CasefileRef.html">CasefileRef</a><ul class='methods'><li data-type='method'><a href="CasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="CasefileRef.html#load">load</a></li></ul></li><li><a href="DeletedCasefileRef.html">DeletedCasefileRef</a><ul class='methods'><li data-type='method'><a href="DeletedCasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="DeletedCasefileRef.html#retrieve">retrieve</a></li></ul></li><li><a href="GitRemote.html">GitRemote</a><ul class='methods'><li data-type='method'><a href="GitRemote.html#commitsUnknown">commitsUnknown</a></li><li data-type='method'><a href="GitRemote.html#delete">delete</a></li><li data-type='method'><a href="GitRemote.html#fetchSharedCasefiles">fetchSharedCasefiles</a></li><li data-type='method'><a href="GitRemote.html#pushCommitRefs">pushCommitRefs</a></li><li data-type='method'><a href="GitRemote.html#share">share</a></li></ul></li><li><a href="module-git-casefile.CasefileKeeper.html">CasefileKeeper</a><ul class='methods'><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getCasefiles">getCasefiles</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getRemotes">getRemotes</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#remote">remote</a></li></ul></li><li><a href="module-git-casefile_impl.DiffInteraction.html">DiffInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.DiffInteraction.html#getHunks">getHunks</a></li></ul></li><li><a href="module-git-casefile_impl.GitInteraction.html">GitInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#deleteCasefilePaths">deleteCasefilePaths</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchFromRemote">fetchFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchSharedCasefilesFromRemote">fetchSharedCasefilesFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#findCurrentLinePosition">findCurrentLinePosition</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getBlobContent">getBlobContent</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefile">getCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefileAuthors">getCasefileAuthors</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfCasefiles">getListOfCasefiles</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfRemotes">getListOfRemotes</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lineIntroduction">lineIntroduction</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lsTree">lsTree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#mktree">mktree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#push">push</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#revParse">revParse</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#selectCommitsUnknownToRemote">selectCommitsUnknownToRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#shareCasefile">shareCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#updateRef">updateRef</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="global.html#event:execute">execute</a></li><li><a href="global.html#event:executing">executing</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/casefile.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @typedef {Object} Casefile
+ *
+ * @property {?string} path
+ * @property {Array.&lt;Bookmark>} bookmarks
+ */
+
+/**
+ * @summary Reference to a group of shared/saved casefiles
+ *
+ * @property {string} name
+ * @property {Array.&lt;CasefileRef>} instances
+ */
+export class CasefileGroup {
+  constructor(gitOps, groupName, instances) {
+    this.name = groupName;
+    this.instances = instances.map(
+      ({ path }) => new CasefileRef(gitOps, groupName, path)
+    );
+  }
+}
+
+/**
+ * @summary Reference to a shared/saved casefile
+ *
+ * @property {string} path
+ *
+ * @description
+ * Objects of this type reference a stored casefile which has been fetched
+ * from a Git remote repository.  The only guarantees made about successfully
+ * [load]{@link CasefileRef#load}ed casefiles are:
+ *
+ *    * The stored casefile is valid JSON.
+ *    * The `path` property is set to the path of this instance.
+ */
+export class CasefileRef {
+  constructor(gitOps, groupName, path) {
+    this.gitOps = gitOps;
+    this.groupName = groupName;
+    this.path = path;
+  }
+  
+  /**
+   * @summary Get authors who contributed to the referenced casefile
+   * @returns {Promise.&lt;Array.&lt;string>>}
+   */
+  async getAuthors() {
+    return this.gitOps.getCasefileAuthors(this.path).then(
+      ({ authors }) => authors
+    );
+  }
+  
+  /**
+   * @summary Load the casefile contents from the repository
+   * @returns {Promise.&lt;(Casefile | object)>}
+   */
+  async load() {
+    return this.gitOps.getCasefile(this.path);
+  }
+}
+
+/**
+ * @summary Reference to a previously shared casefile, now deleted
+ */
+export class DeletedCasefileRef {
+  constructor(gitOps, { commit, committed, path }) {
+    this.gitOps = gitOps;
+    this.deletionCommit = commit;
+    this.committed = committed;
+    this.path = path;
+  }
+  
+  /**
+   * @summary Get authors who contributed to the referenced casefile
+   * @returns {Promise.&lt;Array.&lt;string>>}
+   */
+  async getAuthors() {
+    return this.gitOps.getCasefileAuthors(this.path).then(
+      ({ authors }) => authors
+    );
+  }
+  
+  /**
+   * @summary Load the casefile contents from the repository history
+   * @returns {Promise.&lt;object>}
+   */
+  async retrieve() {
+    return this.gitOps.getCasefile(this.path, {
+      beforeCommit: this.deletionCommit
+    });
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Wed Feb 22 2023 22:17:34 GMT-0800 (Pacific Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="styles/pkg-custom.css">
+    
+</body>
+</html>
