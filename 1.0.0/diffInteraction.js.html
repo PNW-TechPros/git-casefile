@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>diffInteraction.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../versions.html" class="menu-item version-select" id="other_versions" >select version</a></h2><h3>Interfaces</h3><ul><li><a href="EditBuffer.html">EditBuffer</a><ul class='methods'><li data-type='method'><a href="EditBuffer.html#lineText">lineText</a></li></ul></li><li><a href="Editor.html">Editor</a><ul class='methods'><li data-type='method'><a href="Editor.html#liveContent">liveContent</a></li><li data-type='method'><a href="Editor.html#open">open</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="CasefileGroup.html">CasefileGroup</a></li><li><a href="CasefileRef.html">CasefileRef</a><ul class='methods'><li data-type='method'><a href="CasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="CasefileRef.html#load">load</a></li></ul></li><li><a href="DeletedCasefileRef.html">DeletedCasefileRef</a><ul class='methods'><li data-type='method'><a href="DeletedCasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="DeletedCasefileRef.html#retrieve">retrieve</a></li></ul></li><li><a href="module.html#.exports">exports</a></li></ul><h3>Events</h3><ul><li><a href="CommandRunner.html#event:execute">execute</a></li><li><a href="CommandRunner.html#event:executing">executing</a></li></ul><h3>Global</h3><ul><li><a href="global.html#commitsUnknown">commitsUnknown</a></li><li><a href="global.html#computeLinePeg">computeLinePeg</a></li><li><a href="global.html#createCommandRunner">createCommandRunner</a></li><li><a href="global.html#currentLocation">currentLocation</a></li><li><a href="global.html#delete">delete</a></li><li><a href="global.html#deleteCasefilePaths">deleteCasefilePaths</a></li><li><a href="global.html#fetchFromRemote">fetchFromRemote</a></li><li><a href="global.html#fetchSharedCasefiles">fetchSharedCasefiles</a></li><li><a href="global.html#fetchSharedCasefilesFromRemote">fetchSharedCasefilesFromRemote</a></li><li><a href="global.html#findCurrentLinePosition">findCurrentLinePosition</a></li><li><a href="global.html#getBlobContent">getBlobContent</a></li><li><a href="global.html#getCasefile">getCasefile</a></li><li><a href="global.html#getCasefileAuthors">getCasefileAuthors</a></li><li><a href="global.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li><a href="global.html#getHunks">getHunks</a></li><li><a href="global.html#getListOfCasefiles">getListOfCasefiles</a></li><li><a href="global.html#getListOfRemotes">getListOfRemotes</a></li><li><a href="global.html#lineIntroduction">lineIntroduction</a></li><li><a href="global.html#lsTree">lsTree</a></li><li><a href="global.html#makeEnum">makeEnum</a></li><li><a href="global.html#mktree">mktree</a></li><li><a href="global.html#push">push</a></li><li><a href="global.html#pushCommitRefs">pushCommitRefs</a></li><li><a href="global.html#revParse">revParse</a></li><li><a href="global.html#selectCommitsUnknownToRemote">selectCommitsUnknownToRemote</a></li><li><a href="global.html#share">share</a></li><li><a href="global.html#shareCasefile">shareCasefile</a></li><li><a href="global.html#strrpart">strrpart</a></li><li><a href="global.html#updateRef">updateRef</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">diffInteraction.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import fsPromises from 'fs/promises';
+import { write as temporaryWrite } from 'tempy';
+import CodedError, { ASSERT_ERROR } from './codedError.js';
+import Janitor from './janitor.js';
+import SeparatedRecordConsumer from './SeparatedRecordConsumer.js';
+import { ENDL_PATTERN } from './stringUtils.js';
+import { normalizeOpts } from './toolInvocationHelpers.js';
+
+export { ASSERT_ERROR };
+
+const hunkMapping = /^@@\s*-?(\d+)(?:,(\d+))?\s+\+?(\d+)(?:,(\d+))?/;
+
+export default class DiffInteraction {
+  constructor({ runDiffCommand }) {
+    this.diffCommandRunner = runDiffCommand;
+  }
+  
+  async runDiffCommand({opts = {}, ...kwargs} = {}) {
+    // Preprocess opts
+    opts = normalizeOpts(opts);
+    
+    return this.diffCommandRunner({opts, ...kwargs});
+  }
+  
+  /**
+   * @typedef {object} OnDiskContent
+   * @summary Indicate content stored on the disk
+   * @property {string} path - Path to the file containing the content
+   */
+  
+  /**
+   * @typedef {object} ImmediateContent
+   * @summary Provide content as a string
+   * @property {string} immediate - The text to process
+   */
+  
+  /**
+   * @typedef {(OnDiskContent | ImmediateContent)} TextContent
+   */
+  
+  /**
+   * @typedef {object} Change
+   * @summary Range of 1-based line numbers in both sides of a diff representing a change
+   *
+   * @property {number} baseStart
+   *    1-based line number in base version to delete or before which to insert
+   * @property {number} baseEnd
+   *    1-based line number of the first line *not* to delete; for pure
+   *    insertion, this equals *baseStart*
+   * @property {number} currentStart
+   *    1-based line number in current version to add or mark position of
+   *    deletion
+   * @property {number} currentEnd
+   *    1-based line number in current version marking the first line *not* to
+   *    insert; for pure deletion, this equals *currentStart*
+   */
+  
+  /**
+   * @summary Get line number ranges of hunks that change between two text versions
+   * @param {TextContent} baseContent
+   * @param {TextContent} currentContent
+   * @returns {Array.&lt;Change>}
+   *
+   * @description
+   * Invoke `diff` to compute line-based hunks that change from a base version
+   * to a current version.  The content for a version may be provided either
+   * as a path to a file already on disk or as an immediate string; when an
+   * immediate string is provided, it is saved to a temporary file so that
+   * two files paths can be provided for invoking `diff`.
+   */
+  async getHunks(baseContent, currentContent) {
+    const janitor = new Janitor();
+    try {
+      const [ basePath, currentPath ] = await Promise.all(
+        [baseContent, currentContent].map(c => this._getPath(c, janitor))
+      );
+      
+      const hunks = [];
+      return await this.runDiffCommand({
+        opts: { U: 0 },
+        args: [ basePath, currentPath ],
+        stdout: new SeparatedRecordConsumer(ENDL_PATTERN).on('record', (line) => {
+          const parts = hunkMapping.exec(line);
+          if (!parts) return;
+          const newHunk = {
+            baseStart: parseInt(parts[1]),
+            baseEnd: parseInt(parts[1]) + parseInt(parts[2] || "1"),
+            currentStart: parseInt(parts[3]),
+            currentEnd: parseInt(parts[3]) + parseInt(parts[4] || "1"),
+          };
+          if (parts[2] == "0") {
+            newHunk.baseStart = newHunk.baseEnd = newHunk.baseStart + 1;
+          }
+          if (parts[4] == "0") {
+            newHunk.currentStart = newHunk.currentEnd = newHunk.currentStart + 1;
+          }
+          hunks.push(newHunk);
+        }),
+        exit: exitCode => {
+          if (exitCode === 0 || exitCode === 1) {
+            return hunks;
+          } else {
+            const error = new DiffInteractionError({
+              code: 'DiffFailure',
+              message: "'diff' between base and current failed",
+              base: contentDesc(baseContent),
+              current: contentDesc(currentContent),
+              exitCode,
+            });
+            throw error;
+          }
+        },
+      });
+    } finally {
+      await janitor.cleanUpAsync();
+    }
+  }
+  
+  async _getPath(content, janitor) {
+    if (content.path) {
+      return content.path;
+    }
+    if (content.immediate) {
+      const filePath = await temporaryWrite(content.immediate);
+      janitor.addTask(() => fsPromises.rm(filePath, {force: true}));
+      return filePath;
+    }
+    throw new DiffInteractionError({
+      code: 'UnknownContentType',
+      contentKeys: Object.keys(content),
+    });
+  }
+}
+
+function contentDesc(content) {
+  if (content.path) {
+    return { path: content.path };
+  }
+  if (content.immediate) {
+    return { immediate: '...' };
+  }
+  /* istanbul ignore next */
+  return Object.keys(content);
+}
+
+const ERROR_MESSAGES_BY_CODE = {
+  DiffFailure: "The diff command failed",
+  UnknownContentType: "The content source is of an unknown type (expected 'path' or 'immediate')",
+};
+
+export class DiffInteractionError extends CodedError(ERROR_MESSAGES_BY_CODE) {}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Mon Feb 20 2023 08:53:57 GMT-0800 (Pacific Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="styles/pkg-custom.css">
+    
+</body>
+</html>

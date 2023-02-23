@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>lib/stringUtils.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../versions.html" class="menu-item version-select" id="other_versions" >select version</a></h2><h3>Interfaces</h3><ul><li><a href="EditBuffer.html">EditBuffer</a><ul class='methods'><li data-type='method'><a href="EditBuffer.html#lineText">lineText</a></li></ul></li><li><a href="Editor.html">Editor</a><ul class='methods'><li data-type='method'><a href="Editor.html#liveContent">liveContent</a></li><li data-type='method'><a href="Editor.html#open">open</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="BookmarkFacilitator.html">BookmarkFacilitator</a><ul class='methods'><li data-type='method'><a href="BookmarkFacilitator.html#computeLinePeg">computeLinePeg</a></li><li data-type='method'><a href="BookmarkFacilitator.html#currentLocation">currentLocation</a></li></ul></li><li><a href="CasefileGroup.html">CasefileGroup</a></li><li><a href="CasefileKeeper.html">CasefileKeeper</a><ul class='methods'><li data-type='method'><a href="CasefileKeeper.html#getCasefiles">getCasefiles</a></li><li data-type='method'><a href="CasefileKeeper.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="CasefileKeeper.html#getRemotes">getRemotes</a></li><li data-type='method'><a href="CasefileKeeper.html#remote">remote</a></li></ul></li><li><a href="CasefileRef.html">CasefileRef</a><ul class='methods'><li data-type='method'><a href="CasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="CasefileRef.html#load">load</a></li></ul></li><li><a href="DeletedCasefileRef.html">DeletedCasefileRef</a><ul class='methods'><li data-type='method'><a href="DeletedCasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="DeletedCasefileRef.html#retrieve">retrieve</a></li></ul></li><li><a href="GitRemote.html">GitRemote</a><ul class='methods'><li data-type='method'><a href="GitRemote.html#commitsUnknown">commitsUnknown</a></li><li data-type='method'><a href="GitRemote.html#delete">delete</a></li><li data-type='method'><a href="GitRemote.html#fetchSharedCasefiles">fetchSharedCasefiles</a></li><li data-type='method'><a href="GitRemote.html#pushCommitRefs">pushCommitRefs</a></li><li data-type='method'><a href="GitRemote.html#share">share</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="CommandRunner.html#event:execute">execute</a></li><li><a href="CommandRunner.html#event:executing">executing</a></li></ul><h3>Global</h3><ul><li><a href="global.html#makeEnum">makeEnum</a></li><li><a href="global.html#strrpart">strrpart</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/stringUtils.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>export const ENDL_PATTERN = /\r?\n|\r/;
+const MAYBE_ENDL_AT_END_PATTERN = new RegExp(`(?:${ENDL_PATTERN.source})?$`);
+
+/**
+ * @summary Reverse string partition (split)
+ * @param {string} s - The string to be split
+ * @param {string} sep - The separator between result parts
+ * @param {number} [maxCount=Infinity] - The maximum number of groups to return
+ * @returns {Array.&lt;string>} The separated parts of *s*
+ *
+ * @description
+ * Somewhat similar to `String.prototype.split()`, this function divides the
+ * input string *s* at each *sep* starting from the right.  However, in a
+ * difference from `String.prototype.split()`, element 0 of the result will
+ * always contain the part of *s* before the first separator; if more than
+ * *maxCount* - 1 instances of *sep* occur in *s*, the additional instances
+ * of *sep* will be part of element 0 of the result.
+ */
+export function strrpart(s, sep, maxCount = Infinity) {
+  const result = [];
+  for (let start = Infinity; start >= 0; ) {
+    if (result.length + 1 >= maxCount) {
+      result.unshift(s.slice(0, start));
+      break;
+    }
+    const sepIndex = s.lastIndexOf(sep, start - 1);
+    if (sepIndex &lt; 0) {
+      result.unshift(s.slice(0, start));
+      break;
+    }
+    result.unshift(s.slice(sepIndex + 1, start));
+    start = sepIndex;
+  }
+  return result;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Mon Feb 20 2023 10:35:07 GMT-0800 (Pacific Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="styles/pkg-custom.css">
+    
+</body>
+</html>
