@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import path from 'path';
 import { ENDL_PATTERN } from './stringUtils.js';
 
 /**
@@ -39,9 +40,16 @@ import { ENDL_PATTERN } from './stringUtils.js';
  */
 /* istanbul ignore next - not used in real tools */
 export class NoEditor {
+  constructor({ cwd }) {
+    this.cwd = cwd;
+  }
+  
   async liveContent() {}
   
   async open(filePath) {
+    if (this.cwd) {
+      filePath = path.resolve(this.cwd, filePath);
+    }
     const lines = await fs.readFile(filePath, { encoding: 'utf8' }).then(
       content => content.split(ENDL_PATTERN)
     );

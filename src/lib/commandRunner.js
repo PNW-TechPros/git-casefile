@@ -1,6 +1,6 @@
 import { spawn } from 'child_process';
-import { Writable } from 'stream';
-import { Transform } from 'stream';
+import { resolve as resolvePath } from 'path';
+import { Transform, Writable } from 'stream';
 import { StringDecoder } from 'string_decoder';
 import CodedError from './codedError.js';
 
@@ -239,7 +239,11 @@ export default function(program, {
       return { spawnEnv: process.env, spawnEnvSource: 'proces.env' };
     }());
     const spawnOpts = {
-      cwd: (typeof overrideCwd === 'undefined') ? cwd : overrideCwd,
+      cwd: (function() {
+          if (typeof overrideCwd === 'undefined') return cwd;
+          if (cwd) return resolvePath(cwd, overrideCwd);
+          return overrideCwd;
+      }()),
       env: {
         ...spawnEnv,
       },

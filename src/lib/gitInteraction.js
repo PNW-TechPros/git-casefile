@@ -875,7 +875,7 @@ class GitInteraction {
           
           const { sourceline, resultline, span } = lineParts;
           if (sourceline <= soughtLine && soughtLine < sourceline + span) {
-            resolve({ line: resultline + (sourceline - soughtLine)});
+            resolve({ line: resultline + (soughtLine - sourceline) });
             endStream();
           }
         }),

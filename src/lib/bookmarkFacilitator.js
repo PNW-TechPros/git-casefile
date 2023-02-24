@@ -83,7 +83,7 @@ class BookmarkFacilitator {
    */
   constructor({ editor, gitOps, runGitCommand, diffOps, runDiffCommand, toolOptions = {}, logger = console } = {}) {
     this.logger = logger;
-    this.editor = editor || new NoEditor();
+    this.editor = editor || new NoEditor({...toolOptions});
     this.gitOps = gitOps || new GitInteraction({
       runGitCommand: runGitCommand || CommandRunner('git', {
         ...toolOptions,

@@ -83,7 +83,7 @@ class DiffInteraction {
       return await this.runDiffCommand({
         opts: { U: 0 },
         args: [ basePath, currentPath ],
-        stdout: new SeparatedRecordConsumer(ENDL_PATTERN).on('record', (line) => {
+        stdout: new SeparatedRecordConsumer(ENDL_PATTERN).setRecordEncoding('utf8').on('record', (line) => {
           const parts = hunkMapping.exec(line);
           if (!parts) return;
           const newHunk = {
