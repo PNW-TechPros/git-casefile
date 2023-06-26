@@ -347,15 +347,21 @@ export default function(program, {
           ;
       }
       
-      if (feedStdin) {
-        feedStdin(childProc.stdin);
-      }
-      
       childProc.on('error', reject);
       childProc.on('exit', (code) => {
         closesComplete.process = code;
         stepExit();
       });
+      
+      if (feedStdin) {
+        let endNeeded = true;
+        childProc.stdin.on('finish', () => { endNeeded = false; });
+        Promise.resolve(feedStdin(childProc.stdin)).then(() => {
+          if (endNeeded) {
+            childProc.stdin.end();
+          }
+        });
+      }
     });
     
     if (timeout) {
