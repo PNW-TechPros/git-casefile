@@ -857,7 +857,7 @@ class GitInteraction {
     return new Promise((resolve, reject) => {
       this.runGitCommand('blame', {
         opts: gitOpts,
-        args: [ `${commit}..`, '--', basename(filePath) ],
+        args: [ '--', basename(filePath) ],
         operationDescription:
           `locate line ${line} from commit ${commit.slice(0, 7)}` +
           ` of ${filePath} in ${contentGiven ? 'given' : 'current'} content`,

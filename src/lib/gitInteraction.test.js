@@ -1714,7 +1714,7 @@ describe('GitInteraction', () => {
     const expectedGitCmd = {
       command: 'blame',
       opts: { incremental: true, contents: '-' },
-      args: [ `${peg.commit}..`, '--', filePath ],
+      args: [ '--', filePath ],
       omitOpts(...keys) {
         const resultOpts = {...this.opts};
         for (const key of keys) {
