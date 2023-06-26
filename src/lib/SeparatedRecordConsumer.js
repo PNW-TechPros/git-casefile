@@ -8,6 +8,7 @@ export default class SeparatedRecordConsumer extends Writable {
     this._recordEncoding = null;
     this._stringDecoder = null;
     this._carryover = '';
+    this._keepEmitting = true;
   }
   
   _write(chunk, encoding, next) {
@@ -21,12 +22,14 @@ export default class SeparatedRecordConsumer extends Writable {
       sepPos = this._nextSep(working, iterStart);
       iterStart = sepPos.start + sepPos.length
     ) {
+      if (!this._keepEmitting) break;
       this.emit(
         'record',
         working.slice(iterStart, sepPos.start),
         () => {
           iterStart = working.length;
           this.destroy();
+          this._keepEmitting = false;
         },
       );
     }
