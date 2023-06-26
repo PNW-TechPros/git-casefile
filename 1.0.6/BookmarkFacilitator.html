@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>BookmarkFacilitator - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../versions.html" class="menu-item version-select" id="other_versions" >select version</a></h2><h3>Modules</h3><ul><li><a href="module-git-casefile.html">git-casefile</a></li><li><a href="module-git-casefile_impl.html">git-casefile/impl</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.html#.CommandRunner">CommandRunner</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="EditBuffer.html">EditBuffer</a><ul class='methods'><li data-type='method'><a href="EditBuffer.html#lineText">lineText</a></li></ul></li><li><a href="Editor.html">Editor</a><ul class='methods'><li data-type='method'><a href="Editor.html#liveContent">liveContent</a></li><li data-type='method'><a href="Editor.html#open">open</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="BookmarkFacilitator.html">BookmarkFacilitator</a><ul class='methods'><li data-type='method'><a href="BookmarkFacilitator.html#computeLinePeg">computeLinePeg</a></li><li data-type='method'><a href="BookmarkFacilitator.html#currentLocation">currentLocation</a></li></ul></li><li><a href="CasefileGroup.html">CasefileGroup</a></li><li><a href="CasefileRef.html">CasefileRef</a><ul class='methods'><li data-type='method'><a href="CasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="CasefileRef.html#load">load</a></li></ul></li><li><a href="DeletedCasefileRef.html">DeletedCasefileRef</a><ul class='methods'><li data-type='method'><a href="DeletedCasefileRef.html#getAuthors">getAuthors</a></li><li data-type='method'><a href="DeletedCasefileRef.html#retrieve">retrieve</a></li></ul></li><li><a href="GitRemote.html">GitRemote</a><ul class='methods'><li data-type='method'><a href="GitRemote.html#commitsUnknown">commitsUnknown</a></li><li data-type='method'><a href="GitRemote.html#delete">delete</a></li><li data-type='method'><a href="GitRemote.html#fetchSharedCasefiles">fetchSharedCasefiles</a></li><li data-type='method'><a href="GitRemote.html#pushCommitRefs">pushCommitRefs</a></li><li data-type='method'><a href="GitRemote.html#share">share</a></li></ul></li><li><a href="module-git-casefile.CasefileKeeper.html">CasefileKeeper</a><ul class='methods'><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getCasefiles">getCasefiles</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#getRemotes">getRemotes</a></li><li data-type='method'><a href="module-git-casefile.CasefileKeeper.html#remote">remote</a></li></ul></li><li><a href="module-git-casefile_impl.DiffInteraction.html">DiffInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.DiffInteraction.html#getHunks">getHunks</a></li></ul></li><li><a href="module-git-casefile_impl.GitInteraction.html">GitInteraction</a><ul class='methods'><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#deleteCasefilePaths">deleteCasefilePaths</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchFromRemote">fetchFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#fetchSharedCasefilesFromRemote">fetchSharedCasefilesFromRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#findCurrentLinePosition">findCurrentLinePosition</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getBlobContent">getBlobContent</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefile">getCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getCasefileAuthors">getCasefileAuthors</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getDeletedCasefileRefs">getDeletedCasefileRefs</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfCasefiles">getListOfCasefiles</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#getListOfRemotes">getListOfRemotes</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lineIntroduction">lineIntroduction</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#lsTree">lsTree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#mktree">mktree</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#push">push</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#revParse">revParse</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#selectCommitsUnknownToRemote">selectCommitsUnknownToRemote</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#shareCasefile">shareCasefile</a></li><li data-type='method'><a href="module-git-casefile_impl.GitInteraction.html#updateRef">updateRef</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="global.html#event:execute">execute</a></li><li><a href="global.html#event:executing">executing</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">BookmarkFacilitator</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        BookmarkFacilitator
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+
+    <h4 class="name" id="BookmarkFacilitator"><span class="type-signature"></span>new BookmarkFacilitator<span class="signature">(kwargs<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary usertext"><p>Class implementing bookmark-related operations</p></p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_bookmarkFacilitator.js.html">lib/bookmarkFacilitator.js</a>, <a href="lib_bookmarkFacilitator.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>logger</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Logger</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Logger used for error and warning messages</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>editor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Editor.html">Editor</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Editor integration object, providing access to unsaved file content</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gitOps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GitInteraction</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Used to execute <code>git</code> commands</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>diffOps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DiffInteraction</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Used to execute <code>diff</code></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    <p>A BookmarkFacilitator needs a GitInteraction and a
+DiffInteraction for carrying out its various methods.  If these
+are not provided in the <em>kwargs.gitOps</em> and <em>kwargs.diffOps</em> parameters,
+they will be constructed from the parameters that are provided.</p>
+<p>Construction of a GitInteraction requires a <code>runGitCommand</code>
+which, if not provided in <em>kwargs.runGitCommand</em>, is constructed based
+on <em>kwargs.toolOptions</em> (though passing <code>usesSubcommands</code> as <code>true</code>).
+Similarly, construction of a DiffInteraction requires a
+<code>runDiffCommand</code> which, if not provided in <em>kwargs.runDiffCommand</em>,
+is constructed based on <em>kwargs.toolOptions</em> (though passing
+<code>usesSubcommands</code> as <code>false</code>).</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>kwargs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>editor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Editor.html">Editor</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Object used for interacting with the conceptual editor that might hold
+live changes to a given file in the working tree</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gitOps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">GitInteraction</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Alternate implementation of Git operations</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>runGitCommand</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ToolkitRunnerFunc">ToolkitRunnerFunc</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Alternate command runner for executing <code>git</code> program used to construct
+a GitInteraction object if <em>kwargs.gitOps</em> is not given</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>diffOps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DiffInteraction</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Alternate implementation of diff operations</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>runDiffCommand</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CommandRunnerFunc">CommandRunnerFunc</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Alternate command runner for executing <code>diff</code> program used to construct
+a DiffInteraction object if <em>kwargs.diffOps</em> is not given</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>toolOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>{}</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Tool options passed to CommandRunner, used if functions for
+invoking <code>git</code> or <code>diff</code> are needed</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>logger</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Logger</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>console</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>A <code>console</code>-like object used for logging warnings and errors</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="computeLinePeg"><span class="type-signature">(async) </span>computeLinePeg<span class="signature">(filePath, currentLine, kwargs<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;{line: number, commit: ?string}>}</span></h4>
+
+    
+    <p class="summary usertext"><p>Compute <em>peg</em> for bookmark</p></p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_bookmarkFacilitator.js.html">lib/bookmarkFacilitator.js</a>, <a href="lib_bookmarkFacilitator.js.html#line191">line 191</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Path of file</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>currentLine</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Line (1-based) of file</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>kwargs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>commit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Start point for the search</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;{line: number, commit: ?string}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="currentLocation"><span class="type-signature">(async) </span>currentLocation<span class="signature">(bookmark)</span><span class="type-signature"> &rarr; {Promise.&lt;{file: string, line: number, col: number}>}</span></h4>
+
+    
+    <p class="summary usertext"><p>Find the location of a bookmark in the current file content</p></p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_bookmarkFacilitator.js.html">lib/bookmarkFacilitator.js</a>, <a href="lib_bookmarkFacilitator.js.html#line108">line 108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bookmark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Bookmark">Bookmark</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Bookmark whose current location to determine</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;{file: string, line: number, col: number}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Sun Jun 25 2023 22:42:21 GMT-0700 (Pacific Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="styles/pkg-custom.css">
+    
+</body>
+</html>
