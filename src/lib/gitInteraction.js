@@ -847,7 +847,7 @@ class GitInteraction {
   async findCurrentLinePosition(filePath, {commit, line}, content) {
     const soughtLine = Number(line);
     const commitLinePattern = new RegExp(
-      `^${commit}\S* (?<sourceline>\\d+) (?<resultline>\\d+) (?<span>\\d+)`
+      `^${commit}\\S* (?<sourceline>\\d+) (?<resultline>\\d+) (?<span>\\d+)`
     );
     const gitOpts = { incremental: true };
     const contentGiven = content !== undefined;
