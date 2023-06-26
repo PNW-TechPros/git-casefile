@@ -13,7 +13,7 @@ import { ENDL_PATTERN } from './stringUtils.js';
  * @method
  * @name Editor#open
  * @param {string} filePath
- * @returns {EditBuffer}
+ * @returns {(EditBuffer | Promise.<EditBuffer>)}
  */
 
 /**
