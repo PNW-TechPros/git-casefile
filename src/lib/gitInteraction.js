@@ -524,6 +524,7 @@ class GitInteraction {
   async lsTree(treeish) {
     const treeEntries = [];
     const recordDecoder = new SeparatedRecordConsumer('\0')
+      .setRecordEncoding('utf8')
       .on('record', (entry) => {
         const match = gitLsTreeEntryRegex.exec(entry);
         if (match) {
@@ -694,6 +695,7 @@ class GitInteraction {
     const deletedCasefiles = [], State = DeletedCasefileListingStates;
     let remainder = '', parseState = State.action, commitInfo = null;
     const recordDecoder = new SeparatedRecordConsumer('\0')
+      .setRecordEncoding('utf8')
       .on('record', (rec) => {
         switch (parseState) {
           case State.action:

@@ -126,6 +126,13 @@ describe('GitInteraction', () => {
           }
         });
       }
+      const origStdoutWrite = result.stdout.write.bind(result.stdout);
+      result.stdout.write = (value) => {
+        if (typeof value === 'string') {
+          value = Buffer.from(value, 'utf8');
+        }
+        return origStdoutWrite(value);
+      };
       return result;
     }
   }
